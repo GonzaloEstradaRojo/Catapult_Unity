@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.2/release' branch; Version is '2021.2.0f1 (4bf1ec4b23c9) revision 4977132'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19042.1348; Version 2009; 64bit' Language: 'es' Physical Memory: 16333 MB
+OS: 'Windows 10 Home; OS build 19042.1415; Version 2009; 64bit' Language: 'es' Physical Memory: 16333 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -15,7 +15,7 @@ D:/Github repository/Catapult_Unity/Catapult
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-62099
+55934
 Successfully changed project path to: D:/Github repository/Catapult_Unity/Catapult
 D:/Github repository/Catapult_Unity/Catapult
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ D:/Github repository/Catapult_Unity/Catapult
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 91.55 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 367.99 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.0f1 (4bf1ec4b23c9)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/Resources/UnitySubsystems
@@ -63,155 +63,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009926 seconds.
+Registered in 0.014020 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 92.77 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 103.61 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.044 seconds
+- Completed reload, in  3.865 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1045ms)
-		BeginReloadAssembly (66ms)
+	ReloadAssembly (3865ms)
+		BeginReloadAssembly (107ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (423ms)
-			LoadAssemblies (64ms)
+		EndReloadAssembly (584ms)
+			LoadAssemblies (106ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (89ms)
+			SetupTypeCache (125ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (23ms)
-			SetupLoadedEditorAssemblies (266ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (360ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
+				InitializePlatformSupportModulesInManaged (9ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (93ms)
+				RefreshPlugins (104ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (125ms)
-				ProcessInitializeOnLoadMethodAttributes (39ms)
+				ProcessInitializeOnLoadAttributes (161ms)
+				ProcessInitializeOnLoadMethodAttributes (84ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006360 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\Github repository\Catapult_Unity\Catapult\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\Github repository\Catapult_Unity\Catapult\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 89.93 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.588 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1588ms)
-		BeginReloadAssembly (163ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (1335ms)
-			LoadAssemblies (88ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (226ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (60ms)
-			SetupLoadedEditorAssemblies (774ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (90ms)
-				BeforeProcessingInitializeOnLoad (82ms)
-				ProcessInitializeOnLoadAttributes (553ms)
-				ProcessInitializeOnLoadMethodAttributes (30ms)
-				AfterProcessingInitializeOnLoad (8ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.84 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3886 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 38 unused Assets / (55.4 KB). Loaded Objects now: 4344.
-Memory consumption went from 149.4 MB to 149.3 MB.
-Total: 3.134500 ms (FindLiveObjects: 0.291800 ms CreateObjectMapping: 0.103300 ms MarkObjects: 2.674400 ms  DeleteObjects: 0.064400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 441090.224897 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.369879 seconds  code(4) message(Build asset version error: assets/scenes/samplescene.unity in SourceAssetDB has modification time of '2021-12-17T00:15:31.3256853Z' while content on disk has modification time of '0001-01-01T00:00:00Z' with error code 2
-Stacktrace:
-0x00007ff73b7331fd (Unity) StackWalker::GetCurrentCallstack
-0x00007ff73b739f59 (Unity) StackWalker::ShowCallstack
-0x00007ff73c67d203 (Unity) GetStacktrace
-0x00007ff73ca366a4 (Unity) GetAssetHashAndValidate
-0x00007ff73ca31858 (Unity) AssetVersionBuilder::BuildHashOfSourceAssetArray
-0x00007ff73ca2f7fc (Unity) AssetVersionBuilder::BuildAssetVersion
-0x00007ff73ca08631 (Unity) CreateAssetVersionBuilder
-0x00007ff73ca103ad (Unity) ImportToObjects
-0x00007ff73ca0f0f3 (Unity) ImportAsset
-0x00007ff73c99ab7d (Unity) AssetImportWorker::Import
-0x00007ff73c9c561d (Unity) <lambda_4f557c64a2204ac92fa593b25d0e77aa>::operator()
-0x00007ff73ca5b6e2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
-0x00007ff73ca5d96d (Unity) asio::detail::win_iocp_io_service::do_one
-0x00007ff73ca60d8e (Unity) asio::io_service::run
-0x00007ff73ca59b81 (Unity) IOService::Run
-0x00007ff73c9f2f28 (Unity) RunAssetImportWorkerClientV2
-0x00007ff73c9f2ffb (Unity) RunAssetImporterV2
-0x00007ff73c24092f (Unity) Application::InitializeProject
-0x00007ff73c6878e8 (Unity) WinMain
-0x00007ff73d993ae2 (Unity) __scrt_common_main_seh
-0x00007ffc3e637034 (KERNEL32) BaseThreadInitThunk
-0x00007ffc3efe2651 (ntdll) RtlUserThreadStart
-)
-  ERROR: Build asset version error: assets/scenes/samplescene.unity in SourceAssetDB has modification time of '2021-12-17T00:15:31.3256853Z' while content on disk has modification time of '0001-01-01T00:00:00Z' with error code 2
-Stacktrace:
-0x00007ff73b7331fd (Unity) StackWalker::GetCurrentCallstack
-0x00007ff73b739f59 (Unity) StackWalker::ShowCallstack
-0x00007ff73c67d203 (Unity) GetStacktrace
-0x00007ff73ca366a4 (Unity) GetAssetHashAndValidate
-0x00007ff73ca31858 (Unity) AssetVersionBuilder::BuildHashOfSourceAssetArray
-0x00007ff73ca2f7fc (Unity) AssetVersionBuilder::BuildAssetVersion
-0x00007ff73ca08631 (Unity) CreateAssetVersionBuilder
-0x00007ff73ca103ad (Unity) ImportToObjects
-0x00007ff73ca0f0f3 (Unity) ImportAsset
-0x00007ff73c99ab7d (Unity) AssetImportWorker::Import
-0x00007ff73c9c561d (Unity) <lambda_4f557c64a2204ac92fa593b25d0e77aa>::operator()
-0x00007ff73ca5b6e2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
-0x00007ff73ca5d96d (Unity) asio::detail::win_iocp_io_service::do_one
-0x00007ff73ca60d8e (Unity) asio::io_service::run
-0x00007ff73ca59b81 (Unity) IOService::Run
-0x00007ff73c9f2f28 (Unity) RunAssetImportWorkerClientV2
-0x00007ff73c9f2ffb (Unity) RunAssetImporterV2
-0x00007ff73c24092f (Unity) Application::InitializeProject
-0x00007ff73c6878e8 (Unity) WinMain
-0x00007ff73d993ae2 (Unity) __scrt_common_main_seh
-0x00007ffc3e637034 (KERNEL32) BaseThreadInitThunk
-0x00007ffc3efe2651 (ntdll) RtlUserThreadStart
-
+Registered in 0.462042 seconds.
