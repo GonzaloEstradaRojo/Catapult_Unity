@@ -37,10 +37,12 @@ public class Catapulta : MonoBehaviour
     {
         //Debug.Log("Rotor rotation " + Rotor.transform.rotation.eulerAngles.x + "  " + Rotor.transform.rotation.eulerAngles.y + "  " + Rotor.transform.rotation.eulerAngles.z);
         //Debug.Log("rotation " + Rotor.transform.localRotation.eulerAngles.x + "  " + Rotor.transform.localRotation.eulerAngles.y + "  " + Rotor.transform.localRotation.eulerAngles.z);
-        
+
         //float angle = velLanzar * Time.deltaTime;
         //Debug.Log("Angle " + angle);
 
+        float angulo = 0f;
+        float potencia = 0f;
         if (Input.GetKeyDown("space"))
         {
 
@@ -49,22 +51,40 @@ public class Catapulta : MonoBehaviour
 
             //Rotor.gameObject.transform.Rotate(0f, 0f, angle);  // = Quaternion.Euler(new Vector3(Rotor.transform.rotation.x, Rotor.transform.rotation.y,  Rotor.transform.rotation.z + angle));
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A pressed ");
+            calculaAnguloPotencia();
+        }
 
         if (Input.GetKeyDown(KeyCode.S)) 
         {
+
             Debug.Log("S pressed ");
+            LanzarJugador(angulo, potencia);
             Debug.Log("B "+ FirePoint.transform.position);
             GameObject jugador = Instantiate(JugadorPrefab, FirePoint.transform.position, FirePoint.transform.rotation);
             Rigidbody2D rbjugador =  jugador.GetComponent<Rigidbody2D>();
-            float asd = jugador.GetComponent<Jugador>().speed;
-            rbjugador.velocity = FirePoint.transform.forward * asd;
+            //float asd = jugador.GetComponent<Jugador>().speed;
+            //rbjugador.velocity = FirePoint.transform.forward * asd;
 
             //jugador.GetComponent<Jugador>().Velocidad += new Vector2(Mathf.Cos(45) * jugador.GetComponent<Jugador>().speed, Mathf.Sin(45) * jugador.GetComponent<Jugador>().speed);
 
         }
     }
 
-    void LanzarJugador()
+    void calculaAnguloPotencia()
+    {   
+
+        Debug.Log("Calculos ");
+        Debug.Log("Transform position " + transform.position);
+        Vector3 positionRaton = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+        Debug.Log("Camera " + Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)));
+        Debug.Log("Diff " + (positionRaton - transform.position));
+        Debug.Log("Distancia " + Vector3.Distance(transform.position, positionRaton));
+    }
+
+    void LanzarJugador(float angulo, float potencia)
     {
 
     }
