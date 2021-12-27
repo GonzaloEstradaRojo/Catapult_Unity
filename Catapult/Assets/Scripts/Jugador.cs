@@ -22,7 +22,7 @@ public class Jugador : MonoBehaviour
         
     }
 
-    private void OnBecameInvisible()
+    public void OnBecameInvisible()
     {
         Debug.Log("Destruido ");
         Destroy(gameObject);
