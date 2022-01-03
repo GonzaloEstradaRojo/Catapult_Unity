@@ -11,11 +11,9 @@ public class Indicador : MonoBehaviour
     public Slider slider;
 
     private GameObject RotorFlecha;
-    //private Rigidbody2D rbRotorFlecha;
     private Rigidbody2D rbFP;
     public float potencia = 0f;
     public float angulo = 0f;
-    public Text text;
 
     void Start()
     {
@@ -78,7 +76,6 @@ public class Indicador : MonoBehaviour
 
     void calculaAnguloPotencia()
     {
-        Debug.Log("Calculos: ");
         Vector3 positionRaton = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
         float distancia = Vector3.Distance(transform.position, positionRaton);
 
@@ -86,24 +83,14 @@ public class Indicador : MonoBehaviour
             if (distancia < 10)
             {
                 potencia = Map(distancia, 0, 10, 0, 100);
-                text.text = potencia.ToString() + "   " + angulo.ToString();
                 SetPotencia(potencia);
             }
             else
             {
                 potencia = 100;
-                text.text = "  "+ potencia.ToString() + "   " + angulo.ToString();
                 SetPotencia(potencia);
             }               
         }
     }
 
-    public float ReturnAngulo()
-    {
-        return angulo;
-    }
-    public float ReturnPotencia()
-    {
-        return potencia;
-    }
 }

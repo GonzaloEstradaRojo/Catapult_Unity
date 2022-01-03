@@ -51,20 +51,16 @@ public class Catapulta : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) 
         {
             Debug.Log("S pressed ");
+            potenciaLanzamiento = indicador.potencia;
             LanzarJugador();
-            //GameObject jugador = Instantiate(JugadorPrefab, FirePoint.transform.position, FirePoint.transform.rotation);
-            //Rigidbody2D rbjugador =  jugador.GetComponent<Rigidbody2D>();
-            //float asd = jugador.GetComponent<Jugador>().speed;
-            //rbjugador.velocity = FirePoint.transform.forward * asd;
-            //jugador.GetComponent<Jugador>().Velocidad += new Vector2(Mathf.Cos(45) * jugador.GetComponent<Jugador>().speed, Mathf.Sin(45) * jugador.GetComponent<Jugador>().speed);
         }
     }
 
     void LanzarJugador()
     {
         Rigidbody2D rbFP = FirePoint.GetComponent<Rigidbody2D>();
-        GameObject Jugador = Instantiate(JugadorPrefab, rbFP.transform.position, rbFP.transform.rotation);
+        GameObject Jugador = Instantiate(JugadorPrefab, rbFP.transform.position, Quaternion.identity/* rbFP.transform.rotation*/);
         Rigidbody2D rb = Jugador.GetComponent<Rigidbody2D>();
-        rb.AddForce(rbFP.transform.right * indicador.Map(potenciaLanzamiento, 0,100,5,20), ForceMode2D.Impulse);
+        rb.AddForce(rbFP.transform.right * indicador.Map(potenciaLanzamiento, 0,100,10 ,20), ForceMode2D.Impulse);
     }
 }
