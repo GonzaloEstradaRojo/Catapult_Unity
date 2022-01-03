@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Catapulta
+  - Plataforma
+  - Conjunto Plataformas
+  - Torre
+  - Suelo
+  - Zona eliminacion
+  - Jugador
+  - Borde
   layers:
   - Default
   - TransparentFX
@@ -11,8 +19,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Bordes Plataformas
+  - Jugador
   - 
   - 
   - 
