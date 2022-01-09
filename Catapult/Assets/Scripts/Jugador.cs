@@ -12,26 +12,18 @@ using UnityEngine.UI;
 //Cuando llega, se activa la animacion de crear gancho (Solo si es el primero) y despues de tirar
 //Se mueve el Last Jugador una posicion a la derecha
 
-
-
-
-
 public class Jugador : MonoBehaviour
 {
 
-    //public bool Mover = false;
     public float platformMovSpeed = 1f;
-    [SerializeField] LayerMask capaPlataforma;
     public GameObject JugadorPrefab;
+    [SerializeField] LayerMask capaPlataforma;
 
     private Rigidbody2D rb;
-    //private BoxCollider2D coll;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //coll = GetComponent<BoxCollider2D>();
-        //coll.enabled = true;
     }
 
     private void Update()
@@ -44,7 +36,7 @@ public class Jugador : MonoBehaviour
         Debug.DrawRay( transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.green);
         
         //Si alguna esquina choca con la plataforma, se crea el nuevo jugador en la plataforma
-        if(rayCastIzq == true || rayCastDer == true)
+        if(rayCastIzq || rayCastDer)
         {
             Debug.Log("RayCastDer collider " + rayCastDer.collider);
             Debug.Log("RayCastIzq collider " + rayCastIzq.collider);
@@ -55,12 +47,7 @@ public class Jugador : MonoBehaviour
             Debug.Log("Jugador destruido");
             GameObject newJugador = CrearJugadorEnPlataforma(transform.position);
             MoverJugadorEnPlataforma(newJugador, lastJug.transform.position);
-
-            //Vector3 dir = new Vector3(lastJug.transform.position.x - transform.position.x,0,0).normalized * platformMovSpeed;
-
-
         }
-
     }
 
     GameObject CrearJugadorEnPlataforma(Vector3 creationPos)
@@ -69,28 +56,36 @@ public class Jugador : MonoBehaviour
         GameObject jugadorEnPlat = Instantiate(JugadorPrefab, creationPos, Quaternion.identity);
         BoxCollider2D colJugEnPlat = jugadorEnPlat.GetComponent<BoxCollider2D>();
         colJugEnPlat.enabled = true;
-
-        return jugadorEnPlat;
-
         //Rigidbody2D rbJugEnPlat = jugadorEnPlat.GetComponent<Rigidbody2D>();
         //rbJugEnPlat.constraints = RigidbodyConstraints2D.FreezePositionY;
+        
+        return jugadorEnPlat;
     }
 
     void MoverJugadorEnPlataforma(GameObject jugador, Vector3 targetDir)
     {
+        //Mueve al jugador creado al chocar la plataforma hacia el Last Jugador de la plataforma chocada
         Vector3 dir = new Vector3(targetDir.x - transform.position.x,0,0).normalized * platformMovSpeed;
-        Debug.Log("ASDF " + dir);
+        Debug.Log("Vector dirección de movimiento: " + dir);
         jugador.transform.Translate(dir * Time.deltaTime);
-
     }
 
     string PlataformaColisionada(string plataforma)
     {
         //Devuelve "Alta", "Media" o "Baja" dependiendo de en que plataforma haya aterrizado el jugador
         string altura = plataforma.Split(' ')[1];
-        Debug.Log("Altura "+ altura);
+        Debug.Log("Plataforma " + altura);
         return altura;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Zona eliminacion")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -113,18 +108,6 @@ public class Jugador : MonoBehaviour
 
     //    }
     //}
-
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        Debug.Log("collider tag : " + collision.collider.tag);
-
-        if (collision.collider.tag == "Zona eliminacion")
-        {
-            Destroy(gameObject);
-        }
-    }
 
 
 
