@@ -12,6 +12,7 @@ TagManager:
   - Zona eliminacion
   - Jugador
   - Borde
+  - Last Jugador
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Bordes Plataformas
+  - Plataforma
   - Jugador
   - 
   - 
