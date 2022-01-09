@@ -6,11 +6,21 @@ using UnityEngine.UI;
 //Idea: Script para plataformas. Poner un array de jugadores. Acceder al movimiento de los jugadores segun el array y el valor de mover
 //enum cada elemento del array. Cuando choca con la plataforma, añade elemento. Mueve mientras mover sea true
 // logica futura: al quitar cuerda, pop de jugador
+
+
+//Cae jugador en plataforma, se mueve al Last Jugador. Cuando llegue, se añade el jugador a una lista de jugadores en plataforma
+//Cuando llega, se activa la animacion de crear gancho (Solo si es el primero) y despues de tirar
+//Se mueve el Last Jugador una posicion a la derecha
+
+
+
+
+
 public class Jugador : MonoBehaviour
 {
 
     //public bool Mover = false;
-    public float platformMovSpeed = 10f;
+    public float platformMovSpeed = 1f;
     [SerializeField] LayerMask capaPlataforma;
     public GameObject JugadorPrefab;
 
@@ -27,43 +37,56 @@ public class Jugador : MonoBehaviour
     private void Update()
     {
         //Raycast empezando desde los pies en la esquina izq y derecha
-        RaycastHit2D rayCastIzq = Physics2D.Raycast(transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector2.down,0.15f, capaPlataforma);
         RaycastHit2D rayCastDer = Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector2.down,0.15f, capaPlataforma);
+        RaycastHit2D rayCastIzq = Physics2D.Raycast(transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector2.down,0.15f, capaPlataforma);
         
-        Debug.Log("RayCastIzq " + rayCastIzq);
-        Debug.Log("RayCastIzq collider " + rayCastIzq.collider);
-        Debug.Log("RayCastDer " + rayCastDer);
-        Debug.Log("RayCastDer collider " + rayCastDer.collider);
-        Debug.DrawRay( transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.green);
         Debug.DrawRay( transform.position - new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.red);
+        Debug.DrawRay( transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.green);
         
         //Si alguna esquina choca con la plataforma, se crea el nuevo jugador en la plataforma
         if(rayCastIzq == true || rayCastDer == true)
         {
-            string plataformaChocada = rayCastIzq ? rayCastIzq.collider.ToString() : rayCastDer.collider.ToString();
-            PlataformaColisionada(plataformaChocada);
+            Debug.Log("RayCastDer collider " + rayCastDer.collider);
+            Debug.Log("RayCastIzq collider " + rayCastIzq.collider);
+            GameObject plataformaChocada = rayCastIzq ? rayCastIzq.collider.gameObject : rayCastDer.collider.gameObject;
+            GameObject lastJug = plataformaChocada.transform.Find("Last Jugador " + PlataformaColisionada(plataformaChocada.name)).gameObject;
+
             Destroy(gameObject);
             Debug.Log("Jugador destruido");
-            CrearJugadorEnPlataforma(transform.position);
+            GameObject newJugador = CrearJugadorEnPlataforma(transform.position);
+            MoverJugadorEnPlataforma(newJugador, lastJug.transform.position);
+
+            //Vector3 dir = new Vector3(lastJug.transform.position.x - transform.position.x,0,0).normalized * platformMovSpeed;
+
+
         }
 
     }
 
-    void CrearJugadorEnPlataforma(Vector3 position)
+    GameObject CrearJugadorEnPlataforma(Vector3 creationPos)
     {
         Debug.Log("Jugador creado");
-        GameObject jugadorEnPlat = Instantiate(JugadorPrefab, position, Quaternion.identity);
-
+        GameObject jugadorEnPlat = Instantiate(JugadorPrefab, creationPos, Quaternion.identity);
         BoxCollider2D colJugEnPlat = jugadorEnPlat.GetComponent<BoxCollider2D>();
+        colJugEnPlat.enabled = true;
+
+        return jugadorEnPlat;
+
         //Rigidbody2D rbJugEnPlat = jugadorEnPlat.GetComponent<Rigidbody2D>();
         //rbJugEnPlat.constraints = RigidbodyConstraints2D.FreezePositionY;
-        colJugEnPlat.enabled = true;
+    }
+
+    void MoverJugadorEnPlataforma(GameObject jugador, Vector3 targetDir)
+    {
+        Vector3 dir = new Vector3(targetDir.x - transform.position.x,0,0).normalized * platformMovSpeed;
+        Debug.Log("ASDF " + dir);
+        jugador.transform.Translate(dir * Time.deltaTime);
 
     }
 
     string PlataformaColisionada(string plataforma)
     {
-        //Return "Alta", "Media" o "Baja" dependiendo de en que plataforma haya aterrizado el jugador
+        //Devuelve "Alta", "Media" o "Baja" dependiendo de en que plataforma haya aterrizado el jugador
         string altura = plataforma.Split(' ')[1];
         Debug.Log("Altura "+ altura);
         return altura;
