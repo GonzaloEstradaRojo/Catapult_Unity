@@ -9,31 +9,36 @@ public class Indicador : MonoBehaviour
     public GameObject Indicator;
     public GameObject FirePoint;
     public Slider slider;
+    public float potencia = 0f;
+    public float angulo = 0f;
 
     private GameObject RotorFlecha;
     private Rigidbody2D rbFP;
-    public float potencia = 0f;
-    public float angulo = 0f;
+    private Vector3 mousePosInit;
 
     void Start()
     {
         RotorFlecha = Indicator.transform.Find("Rotor Flecha").gameObject;
         rbFP = FirePoint.GetComponent<Rigidbody2D>();
-        //rbRotorFlecha = RotorFlecha.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        FlechaSeguirPuntero();
+        SeguirPunteroConFlecha();
         GirarFirePoint();
-        calculaAnguloPotencia();
+        calculaPotencia();
     }
 
-    void GirarFirePoint() {
+    private void OnMouseDown()
+    {
+        mousePosInit = Input.mousePosition;
+    }
+
+    void GirarFirePoint() {        
+        //Gira el Fire Point para que apunte en la misma direccion que la flecha del indicador
+
         rbFP.transform.rotation = RotorFlecha.transform.rotation;
         rbFP.transform.Rotate(new Vector3(0, 0, 45));
-        angulo = rbFP.transform.rotation.z;
-        //rbFP.transform.rotation = Quaternion.Euler(new Vector3(RotorFlecha.transform.localRotation.x, RotorFlecha.transform.localRotation.y, RotorFlecha.transform.localRotation.z));
     }
 
 
@@ -43,7 +48,13 @@ public class Indicador : MonoBehaviour
     }
 
 
-    void FlechaSeguirPuntero()
+    void SeguirPunteroConFlecha()
+    {
+        float angle = CalculaAngulo();
+        RotorFlecha.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); 
+    }
+
+    float CalculaAngulo()
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -53,10 +64,12 @@ public class Indicador : MonoBehaviour
         mousePos.z = 0;
 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 45;
-        if(angle >= -20 && angle <= 48)
-        { 
-            RotorFlecha.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        } 
+        if (angle < -20)
+            angle = -20;
+        else if (angle > 48)
+            angle = 48;
+        angulo = angle;
+        return angle;
     }
 
 
@@ -74,15 +87,15 @@ public class Indicador : MonoBehaviour
     //}
     #endregion
 
-    void calculaAnguloPotencia()
+    void calculaPotencia()
     {
-        Vector3 positionRaton = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+        Vector2 positionRaton = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distancia = Vector3.Distance(transform.position, positionRaton);
 
         if(positionRaton.y > transform.position.y){
             if (distancia < 10)
             {
-                potencia = Map(distancia, 0, 10, 0, 100);
+                potencia = Mathf.Round(Map(distancia, 0, 10, 0, 100));
                 SetPotencia(potencia);
             }
             else

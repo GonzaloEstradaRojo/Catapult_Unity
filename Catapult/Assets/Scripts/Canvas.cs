@@ -22,8 +22,8 @@ public class Canvas : MonoBehaviour
     void Update()
     {
 
-        textIndicador.text = indicador.potencia.ToString() + "   " + indicador.angulo.ToString();
-        textJugador.text = "Mover: " + jugadorPrefab.Mover.ToString();
+        textIndicador.text = "Potencia: " + indicador.potencia.ToString();
+        textJugador.text = "Angulo: " + indicador.angulo.ToString();
 
     }
 }
