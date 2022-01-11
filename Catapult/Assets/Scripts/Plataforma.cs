@@ -13,20 +13,21 @@ public class Plataforma : MonoBehaviour
     private int NumLastJug = 1;
     private float platMovSpeed = 0.5f;
     private GameObject currentJugador = null;
-    private Jugador currentJugJugador = null;
+    private Rigidbody2D rbCurrentJugador = null;
+    private Jugador currentJugadorScript = null;
     private List<GameObject> ListJugadores = new List<GameObject>();
     private bool MoverJugador = false;
     private bool EliminacionJugador = false;
     private bool DestruirPrimerJugador = false;
     private bool lanzarCuerdaBool = false;
     private float PorcentajeCuerda = 0f;
-    private float velocidadLanzamientoCuerda = 0.5f;
+    private float velocidadLanzamientoCuerda = 2f;
 
     private void Update()
     {
-        if (currentJugJugador)
+        if (currentJugadorScript)
         {
-            MoverJugador = currentJugJugador.moverEnPlataforma;
+            MoverJugador = currentJugadorScript.moverEnPlataforma;
         }
 
         if(MoverJugador)
@@ -142,7 +143,7 @@ public class Plataforma : MonoBehaviour
     private void MoverLastJugador(bool Aumentar)
     {
         int dirMovimiento = Aumentar ? 1 : -1;
-        currentJugJugador.moverEnPlataforma = false; //El current jugador se para de mover
+        currentJugadorScript.moverEnPlataforma = false; //El current jugador se para de mover
         LastJugador.transform.Translate(new Vector3(dirMovimiento*(currentJugador.transform.localScale.x + 0.1f), 0, 0));
         if (Aumentar)
             NumLastJug += 1;
@@ -153,9 +154,11 @@ public class Plataforma : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     { 
         currentJugador = collision.collider.gameObject;
+        rbCurrentJugador = currentJugador.GetComponent<Rigidbody2D>();
+        rbCurrentJugador.velocity = Vector2.zero;
         currentJugador.transform.position = new Vector3(currentJugador.transform.position.x, LastJugador.transform.position.y, 0);
-        currentJugJugador = currentJugador.GetComponent<Jugador>();
-        currentJugJugador.moverEnPlataforma = true;        
+        currentJugadorScript = currentJugador.GetComponent<Jugador>();
+        currentJugadorScript.moverEnPlataforma = true;        
     }
 
 
