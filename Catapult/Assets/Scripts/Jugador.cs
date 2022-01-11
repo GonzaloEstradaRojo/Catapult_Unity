@@ -18,22 +18,24 @@ public class Jugador : MonoBehaviour
     public float platformMovSpeed;
     public GameObject JugadorPrefab;
     [SerializeField] LayerMask capaPlataforma;
+    public bool moverEnPlataforma = false;
+    public string variables;
 
     private Rigidbody2D rb;
-    private bool moverEnPlataforma = false;
     private GameObject plataformaChocada;
     private GameObject currentLastJugador;
     private List<GameObject> currentListPlat;
     private List<GameObject> ListJugPlatAlta = new List<GameObject>();
     private List<GameObject> ListJugPlatMedia = new List<GameObject>();
     private List<GameObject> ListJugPlatBaja = new List<GameObject>();
+    private int PosLastJugAlta = 0;
+    private int PosLastJugMedia = 0;
+    private int PosLastJugBaja = 0;
 
     private void Start()
     {
         platformMovSpeed = 0.5f;
         rb = GetComponent<Rigidbody2D>();
-        Debug.DrawRay( transform.position - new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.red);
-        Debug.DrawRay( transform.position - new Vector3(-transform.localScale.x / 2, transform.localScale.y / 2, 0), Vector3.down*0.15f, Color.green);
     }
 
     private void Update()
@@ -73,10 +75,10 @@ public class Jugador : MonoBehaviour
 
         //Debug.Log(moverEnPlataforma + "Move en plataforma");
 
-        if (moverEnPlataforma)
-        {
-            MoverJugadorEnPlataforma(currentLastJugador.transform.position);
-        }
+        //if (moverEnPlataforma)
+        //{
+        //    MoverJugadorEnPlataforma(currentLastJugador.transform.position);
+        //}
     }
 
     //GameObject CrearJugadorEnPlataforma(Vector3 creationPos)
@@ -97,11 +99,11 @@ public class Jugador : MonoBehaviour
         Vector3 dir = new Vector3(targetDir.x - transform.position.x,0,0).normalized * platformMovSpeed;  
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetDir.x, transform.position.y,transform.position.z), platformMovSpeed*Time.deltaTime);
 
-        Debug.Log("Current Position: " + transform.position);
-        Debug.Log("Target Position: " + new Vector3(targetDir.x, transform.position.y, transform.position.z));
+        //Debug.Log("Current Position: " + transform.position);
+        //Debug.Log("Target Position: " + new Vector3(targetDir.x, transform.position.y, transform.position.z));
         if(transform.position == new Vector3(targetDir.x, transform.position.y, transform.position.z))
         {
-            Debug.Log("Lo hacemos false");
+            //Debug.Log("Lo hacemos false");
             moverEnPlataforma = false;
             MoverLastJugador(currentLastJugador);
         }
@@ -109,8 +111,8 @@ public class Jugador : MonoBehaviour
 
     private void MoverLastJugador(GameObject LastJugador)
     {
-        LastJugador.transform.Translate(new Vector3(transform.localScale.x, 0, 0));
-        Debug.Log("Punto movido a " + LastJugador.transform.position);
+        LastJugador.transform.Translate(new Vector3(transform.localScale.x+0.1f, 0, 0));
+        //Debug.Log("Punto movido a " + LastJugador.transform.position);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -135,16 +137,22 @@ public class Jugador : MonoBehaviour
             {
                 currentListPlat = ListJugPlatAlta;
                 currentLastJugador = plataformaChocada.transform.Find("Last Jugador Alta").gameObject;
+                PosLastJugAlta += 1;
+                transform.name = "Jugador Plataforma Alta " + PosLastJugAlta;
             }
             else if(plataformaChocada.name == "Plataforma Media")
             {
                 currentListPlat = ListJugPlatMedia;
                 currentLastJugador = plataformaChocada.transform.Find("Last Jugador Media").gameObject;
+                PosLastJugMedia += 1;
+                transform.name = "Jugador Plataforma Media " + PosLastJugMedia;
             }
             else if(plataformaChocada.name == "Plataforma Baja")
             {
                 currentListPlat = ListJugPlatBaja;
                 currentLastJugador = plataformaChocada.transform.Find("Last Jugador Baja").gameObject;
+                PosLastJugBaja += 1;
+                transform.name = "Jugador Plataforma Baja " + PosLastJugBaja;
             }
 
             currentListPlat.Add(gameObject);

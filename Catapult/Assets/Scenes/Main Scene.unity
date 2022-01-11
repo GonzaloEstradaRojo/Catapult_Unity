@@ -576,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225583862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.457, y: 1.9, z: 3.574066}
+  m_LocalPosition: {x: -0.45, y: 1.9, z: 0}
   m_LocalScale: {x: 0.18966427, y: 4.5645866, z: 0.85586}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 506412913}
   - component: {fileID: 506412914}
   - component: {fileID: 506412915}
+  - component: {fileID: 506412916}
   m_Layer: 6
   m_Name: Plataforma Media
   m_TagString: Plataforma
@@ -997,8 +998,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506412912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: 0.04, z: 0.115834616}
-  m_LocalScale: {x: 4.5125, y: 0.1875, z: 1}
+  m_LocalPosition: {x: 0.0001, y: 0, z: 0.115834616}
+  m_LocalScale: {x: 4.912893, y: 0.1875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 696137792}
@@ -1084,6 +1085,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.97881055}
   m_EdgeRadius: 0
+--- !u!114 &506412916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506412912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6bf0d1e8a40c647b9c0db437e92826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastJugador: {fileID: 696137791}
 --- !u!1 &540680426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696137791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.455, y: 1.83, z: 3.574066}
+  m_LocalPosition: {x: -0.45, y: 1.9, z: 0}
   m_LocalScale: {x: 0.18966427, y: 4.5645866, z: 0.85586}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1636,7 +1650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241324912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.46, y: 2.11, z: -0.115834616}
+  m_LocalPosition: {x: 9.82, y: 2.11, z: -0.115834616}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1658,6 +1672,7 @@ GameObject:
   - component: {fileID: 1418600240}
   - component: {fileID: 1418600241}
   - component: {fileID: 1418600242}
+  - component: {fileID: 1418600243}
   m_Layer: 6
   m_Name: Plataforma Alta
   m_TagString: Plataforma
@@ -1673,8 +1688,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418600239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 2.01, z: 0.115834616}
-  m_LocalScale: {x: 4.5125, y: 0.1875, z: 1}
+  m_LocalPosition: {x: 0.0001, y: 2, z: 0.115834616}
+  m_LocalScale: {x: 4.912893, y: 0.1875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1463367690}
@@ -1760,6 +1775,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9676978, y: 0.99780524}
   m_EdgeRadius: 0
+--- !u!114 &1418600243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418600239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6bf0d1e8a40c647b9c0db437e92826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastJugador: {fileID: 1463367689}
 --- !u!1 &1456965689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,6 +1988,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463367690}
+  - component: {fileID: 1463367691}
   m_Layer: 0
   m_Name: Last Jugador Alta
   m_TagString: Last Jugador
@@ -1975,13 +2004,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463367689}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.439, y: 1.91, z: 3.574066}
+  m_LocalPosition: {x: -0.45, y: 1.9, z: 0}
   m_LocalScale: {x: 0.18966427, y: 4.5645866, z: 0.85586}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1418600240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463367691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463367689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[{"name":"Posicion","value":{"$content":0,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1507269708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,11 +2613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805382835555447287, guid: 9e4c4401c142a2e4e9e4030013d80112, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.82
+      value: 10.27
       objectReference: {fileID: 0}
     - target: {fileID: 4805382835555447287, guid: 9e4c4401c142a2e4e9e4030013d80112, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.985
+      value: 4.86
       objectReference: {fileID: 0}
     - target: {fileID: 4805382835555447287, guid: 9e4c4401c142a2e4e9e4030013d80112, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2623,6 +2668,7 @@ GameObject:
   - component: {fileID: 1967785536}
   - component: {fileID: 1967785537}
   - component: {fileID: 1967785538}
+  - component: {fileID: 1967785539}
   m_Layer: 6
   m_Name: Plataforma Baja
   m_TagString: Plataforma
@@ -2638,8 +2684,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967785535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: -2.01, z: 0.115834616}
-  m_LocalScale: {x: 4.5125, y: 0.1875, z: 1}
+  m_LocalPosition: {x: 0.0016, y: -2, z: 0.115834616}
+  m_LocalScale: {x: 4.9054427, y: 0.1875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 225583863}
@@ -2725,6 +2771,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.97911644}
   m_EdgeRadius: 0
+--- !u!114 &1967785539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967785535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6bf0d1e8a40c647b9c0db437e92826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastJugador: {fileID: 225583862}
 --- !u!1 &1975094867
 GameObject:
   m_ObjectHideFlags: 0
