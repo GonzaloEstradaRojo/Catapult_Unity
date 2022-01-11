@@ -10,12 +10,14 @@ public class Catapulta : MonoBehaviour
     public GameObject catapulta;
     public GameObject JugadorPrefab;
     public Indicador indicador;
+    public bool canShoot;
 
     private GameObject Estructura;
     private GameObject Rotor;
     private GameObject Brazo;
     private GameObject FirePoint;
     private Animator catapultaAnimator;
+
 
     private float potenciaLanzamiento = 0f;
 
