@@ -13,6 +13,7 @@ TagManager:
   - Jugador
   - Borde
   - Last Jugador
+  - Zona Gancho
   layers:
   - Default
   - TransparentFX
