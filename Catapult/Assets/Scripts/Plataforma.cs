@@ -46,24 +46,24 @@ public class Plataforma : MonoBehaviour
                 EliminacionJugador = true;
         }
         
-        if (Input.GetKeyDown(KeyCode.W))
-            lanzarCuerdaBool = true;
+        //if (Input.GetKeyDown(KeyCode.W))
+        //    lanzarCuerdaBool = true;
 
-        if (Input.GetKeyDown(KeyCode.E))
-            DestruyeCuerda();
+        //if (Input.GetKeyDown(KeyCode.E))
+        //    DestruyeCuerda();
         
 
-        if (lanzarCuerdaBool)
-        {
-            Debug.Log("Cuerda: " + PorcentajeCuerda);
-            Debug.Log("Velocidad Cuerda: " + velocidadLanzamientoCuerda);
-            Debug.Log("Velocidad Total: " + velocidadLanzamientoCuerda * Time.deltaTime);
+        //if (lanzarCuerdaBool)
+        //{
+        //    Debug.Log("Cuerda: " + PorcentajeCuerda);
+        //    Debug.Log("Velocidad Cuerda: " + velocidadLanzamientoCuerda);
+        //    Debug.Log("Velocidad Total: " + velocidadLanzamientoCuerda * Time.deltaTime);
             
-            PorcentajeCuerda += velocidadLanzamientoCuerda * Time.deltaTime;
+        //    PorcentajeCuerda += velocidadLanzamientoCuerda * Time.deltaTime;
 
-            LanzaCuerda(PorcentajeCuerda);
+        //    LanzaCuerda(PorcentajeCuerda);
 
-        }
+        //}
 
     }
 
@@ -88,7 +88,6 @@ public class Plataforma : MonoBehaviour
         else if(ListJugadores.Count == 1)
         {
                 DestruirPrimerJugador = true;
-
         }
     }
 
@@ -104,7 +103,6 @@ public class Plataforma : MonoBehaviour
                 ListJugadores[i].name = ListJugadores[i-1].name;
             }
         }
-
     }
 
     void QuitarPrimerJugador()
@@ -119,10 +117,7 @@ public class Plataforma : MonoBehaviour
             EliminacionJugador = false;
             DestruirPrimerJugador = false;
             MoverLastJugador(false);
-
         }
-
-
     }
 
 
@@ -162,19 +157,19 @@ public class Plataforma : MonoBehaviour
     }
 
 
-    public void LanzaCuerda(float porcentaje)
-    {
-        sliderCuerda.value = porcentaje ;
+    //public void LanzaCuerda(float porcentaje)
+    //{
+    //    sliderCuerda.value = porcentaje ;
 
-        if (sliderCuerda.value >= sliderCuerda.maxValue)
-            lanzarCuerdaBool = false;
-    }
+    //    if (sliderCuerda.value >= sliderCuerda.maxValue)
+    //        lanzarCuerdaBool = false;
+    //}
 
-    public void DestruyeCuerda()
-    {
-        PorcentajeCuerda = 0f;
-        LanzaCuerda(PorcentajeCuerda);
-    }
+    //public void DestruyeCuerda()
+    //{
+    //    PorcentajeCuerda = 0f;
+    //    LanzaCuerda(PorcentajeCuerda);
+    //}
 
     #region Funcion para setear el maximo de un slider
     //public void SetMaxPotencia(int maxPotencia)
