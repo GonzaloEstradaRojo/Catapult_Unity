@@ -46,15 +46,19 @@ public class Catapulta : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("Space pressed ");
             catapultaAnimator.SetTrigger("LanzarCatapulta");
             //Rotor.gameObject.transform.Rotate(0f, 0f, angle);  // = Quaternion.Euler(new Vector3(Rotor.transform.rotation.x, Rotor.transform.rotation.y,  Rotor.transform.rotation.z + angle));
         }
         if (Input.GetKeyDown(KeyCode.S)) 
         {
-            Debug.Log("S pressed ");
             potenciaLanzamiento = indicador.potencia;
             LanzarJugador();
+        }
+        if (Input.GetKeyDown(KeyCode.D)) 
+        {
+
+            GameObject Jugador = Instantiate(JugadorPrefab, new Vector3(8,6,0), Quaternion.identity);
+            Rigidbody2D rb = Jugador.GetComponent<Rigidbody2D>();
         }
     }
 

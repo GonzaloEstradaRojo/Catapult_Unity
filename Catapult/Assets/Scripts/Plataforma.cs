@@ -7,44 +7,38 @@ public class Plataforma : MonoBehaviour
 {
 
     public GameObject LastJugador;
-    public Slider sliderCuerda;
-
+    public CuerdasRenderer cuerda;
 
     private int NumLastJug = 1;
-    private float platMovSpeed = 0.5f;
+    private float platMovSpeed = 2f;
     private GameObject currentJugador = null;
     private Rigidbody2D rbCurrentJugador = null;
     private Jugador currentJugadorScript = null;
-    private List<GameObject> ListJugadores = new List<GameObject>();
+    public List<GameObject> ListJugadores = new List<GameObject>();
     private bool MoverJugador = false;
     private bool EliminacionJugador = false;
     private bool DestruirPrimerJugador = false;
-    private bool lanzarCuerdaBool = false;
-    private float PorcentajeCuerda = 0f;
-    private float velocidadLanzamientoCuerda = 2f;
+
+
 
     private void Update()
     {
         if (currentJugadorScript)
-        {
             MoverJugador = currentJugadorScript.moverEnPlataforma;
-        }
 
         if(MoverJugador)
-        {
             MoverJugadorEnPlataforma(currentJugador);
-        }
 
         if (EliminacionJugador)
-        {
             QuitarPrimerJugador();
-        }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if(ListJugadores.Count > 0)
                 EliminacionJugador = true;
         }
+
+        CheckJugadorEnLista();
         
         //if (Input.GetKeyDown(KeyCode.W))
         //    lanzarCuerdaBool = true;
@@ -74,21 +68,18 @@ public class Plataforma : MonoBehaviour
         Vector3 posPrimerJugador = primerJugador.transform.position;
         primerJugador.GetComponent<SpriteRenderer>().enabled = false;
         for (var i = 0; i< lenLista-1; i++)
-        {
-            Debug.Log(ListJugadores[i + 1]);
             ListJugadores[i+1].transform.position = Vector3.MoveTowards(ListJugadores[i+1].transform.position, ListJugadores[i].transform.position, platMovSpeed * Time.deltaTime);
-        }
+
         if(ListJugadores.Count > 1)
-        {   
-            if(primerJugador.transform.position == ListJugadores[1].transform.position)
+        {
+            if (primerJugador.transform.position == ListJugadores[1].transform.position)
             {
                 DestruirPrimerJugador = true;
+                cuerda.lanzarCuerdaBool = true;
             }
         }
         else if(ListJugadores.Count == 1)
-        {
-                DestruirPrimerJugador = true;
-        }
+            DestruirPrimerJugador = true;
     }
 
     void CambiaNombresJugEnPlataformas()
@@ -97,16 +88,14 @@ public class Plataforma : MonoBehaviour
         if(lenLista > 1)
         {
             for (var i = lenLista-1; i>=1; i--)
-            {
-                Debug.Log("Name 1: " + ListJugadores[i-1].name);
-                Debug.Log("Name 2: " + ListJugadores[i].name);
                 ListJugadores[i].name = ListJugadores[i-1].name;
-            }
+
         }
     }
 
     void QuitarPrimerJugador()
     {
+        cuerda.DestruirCuerda();
         GameObject primerJugador = ListJugadores[0];
         MoverTodosJugadores();
         if (DestruirPrimerJugador)
@@ -130,6 +119,10 @@ public class Plataforma : MonoBehaviour
         //Comprobamos si el jugador ya ha llegado a la posicion del Last Jugador
         if (Jugador.transform.position == new Vector3(targetDir.x, Jugador.transform.position.y, 0))
         {
+            if(ListJugadores.Count == 0)
+            {
+                cuerda.lanzarCuerdaBool = true;
+            }
             ListJugadores.Add(Jugador); //Añade el jugador a la lista de jugadores de la plataforma
             MoverLastJugador(true); // Mueve de posicion el Last Jugador
         }
@@ -154,6 +147,11 @@ public class Plataforma : MonoBehaviour
         currentJugador.transform.position = new Vector3(currentJugador.transform.position.x, LastJugador.transform.position.y, 0);
         currentJugadorScript = currentJugador.GetComponent<Jugador>();
         currentJugadorScript.moverEnPlataforma = true;        
+    }
+
+    private bool CheckJugadorEnLista()
+    {
+        return ListJugadores.Count > 0;
     }
 
 
