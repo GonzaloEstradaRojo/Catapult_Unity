@@ -8,6 +8,7 @@ public class Torre : MonoBehaviour
     private GameObject platAltaDer;
     private GameObject platMediaDer;
     private GameObject platBajaDer;
+    private GameObject rotorTorre;
 
 
     private float velocidadRotacion = 0f;
@@ -23,22 +24,20 @@ public class Torre : MonoBehaviour
         platAltaDer = GameObject.Find("Plataforma Alta");
         platMediaDer = GameObject.Find("Plataforma Media");
         platBajaDer = GameObject.Find("Plataforma Baja");
-
-
+        rotorTorre = GameObject.Find("Rotor Torre");
     }
+
     private void Update()
     {
-
         hayGanchos = (platAltaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado ||
                       platMediaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado ||
                       platBajaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado);
-        Debug.Log("hAY GANCHO 2 " + hayGanchos);
+
         List<GameObject> listJugPlatAlta = platAltaDer.GetComponent<Plataforma>().ListJugadores;
         List<GameObject> listJugPlatMedia = platMediaDer.GetComponent<Plataforma>().ListJugadores;
         List<GameObject> listJugPlatBaja = platBajaDer.GetComponent<Plataforma>().ListJugadores;
 
         totalJugadoresDer = listJugPlatAlta.Count + listJugPlatMedia.Count + listJugPlatBaja.Count;
-        Debug.Log("Total jugadores en plataformas " + totalJugadoresDer);
 
         //totalJugadores = totalJugadoresDer - totalJugadoresIzq;
         //if(totalJugadores != 0)
@@ -56,20 +55,31 @@ public class Torre : MonoBehaviour
 
         if(girarTorre == true && hayGanchos)
         {
-            Debug.Log("Girar porque " + hayGanchos);
-            InclinarTorre();
+            StartCoroutine(InclinarTorre());
             //Invoke("InclinarTorre", 50f);
         }
     }
 
-    private void InclinarTorre()
+    private IEnumerator InclinarTorre()
     {
-        Debug.Log("Torre inclinandose");
+        //Debug.Log("Torre inclinandose "+ rotorTorre.transform.localRotation.eulerAngles.z);
         //angle > 0 gira a la izquierda
         //angle < 0 gira a la derecha
-        float angle = -1 * totalJugadoresDer * Time.deltaTime;
-        //float angle = -10 * totalJugadores;
-        transform.Rotate(new Vector3(0, 0, angle));
-        //transform.rotation = Quaternion.Euler(0,0,angle);
+        float inclinacion = rotorTorre.transform.rotation.eulerAngles.z;
+        print("1 " + (inclinacion >= -0.5 && inclinacion <= 70));
+        print("2 " + (inclinacion <= 360 && inclinacion >= 310));
+        print("3 " + ((inclinacion >= -0.5 && inclinacion <= 70) || (inclinacion <= 360 && inclinacion >= 310)));
+
+        while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
+        {
+            float angle = -1 * totalJugadoresDer * Time.deltaTime;
+            //float angle = -10 * totalJugadores;
+            rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
+            yield return new WaitForSeconds(4f);
+            //transform.rotation = Quaternion.Euler(0,0,angle);
+
+        }
+
+
     }
 }

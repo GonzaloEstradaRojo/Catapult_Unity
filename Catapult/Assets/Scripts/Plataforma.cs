@@ -75,7 +75,8 @@ public class Plataforma : MonoBehaviour
             if (primerJugador.transform.position == ListJugadores[1].transform.position)
             {
                 DestruirPrimerJugador = true;
-                cuerda.lanzarCuerdaBool = true;
+                //cuerda.lanzarCuerdaBool = true;
+                StartCoroutine(cuerda.CrearCuerda1());
             }
         }
         else if(ListJugadores.Count == 1)
@@ -121,7 +122,7 @@ public class Plataforma : MonoBehaviour
         {
             if(ListJugadores.Count == 0)
             {
-                cuerda.lanzarCuerdaBool = true;
+                StartCoroutine(cuerda.CrearCuerda1());
             }
             ListJugadores.Add(Jugador); //Añade el jugador a la lista de jugadores de la plataforma
             MoverLastJugador(true); // Mueve de posicion el Last Jugador

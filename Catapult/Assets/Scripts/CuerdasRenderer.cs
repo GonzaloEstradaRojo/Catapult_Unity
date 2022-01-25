@@ -9,7 +9,7 @@ public class CuerdasRenderer : MonoBehaviour
     private GameObject ZonaChoque1;
     LineRenderer lineRenderer;
     Vector3 ZonaChoque1Pos;
-    private float speedLanzaCuerda = 2f;
+    private float speedLanzaCuerda = 10f;
     public bool lanzarCuerdaBool = false;
     GameObject posicionFinal = null;
     public bool estaEnganchado = false;
@@ -38,22 +38,43 @@ public class CuerdasRenderer : MonoBehaviour
     {
         ZonaChoque1Pos = ZonaChoque1.transform.position;
 
-        if (lanzarCuerdaBool)
-            CrearCuerda();
+        //if (lanzarCuerdaBool)
+        //    CrearCuerda();
 
-    }
+        //if (Input.GetKeyDown("f"))
+        //{
+        //    StartCoroutine(CrearCuerda1());
+        //}
 
-    public void CrearCuerda()
-    {
-        posicionFinal.transform.position = Vector3.MoveTowards(posicionFinal.transform.position, ZonaChoque1Pos, speedLanzaCuerda * 10 * Time.deltaTime);
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, posicionFinal.transform.position);
-        if(posicionFinal.transform.position == ZonaChoque1Pos)
+        print(estaEnganchado + " enganchado");
+        if (estaEnganchado)
         {
-            estaEnganchado = true;
+            posicionFinal.transform.position = ZonaChoque1Pos;
+            lineRenderer.SetPosition(1, posicionFinal.transform.position);
         }
     }
-    
+
+    //public void CrearCuerda()
+    //{
+    //    posicionFinal.transform.position = Vector3.Lerp(posicionFinal.transform.position, ZonaChoque1Pos, speedLanzaCuerda * 10 * Time.deltaTime);
+    //    lineRenderer.SetPosition(0, transform.position);
+    //    lineRenderer.SetPosition(1, posicionFinal.transform.position);
+    //}
+
+    public IEnumerator CrearCuerda1() {
+        //posicionFinal.transform.position = Vector3.Lerp();
+        while (Vector3.Distance(posicionFinal.transform.position, ZonaChoque1Pos) > 0.05f)
+        {
+            posicionFinal.transform.position = Vector3.MoveTowards(posicionFinal.transform.position, ZonaChoque1Pos, speedLanzaCuerda * Time.deltaTime);
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, posicionFinal.transform.position);
+            yield return null;
+
+        }
+        estaEnganchado = true;
+    }
+
+
     public void DestruirCuerda()
     {       
         estaEnganchado = false;
