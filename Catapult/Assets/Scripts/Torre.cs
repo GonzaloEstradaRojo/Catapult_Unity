@@ -11,10 +11,11 @@ public class Torre : MonoBehaviour
     private GameObject rotorTorre;
 
 
-    private float velocidadRotacion = 0f;
+    private float velocidadRotacion = 10f;
     private int totalJugadoresDer; 
     private int totalJugadoresIzq;
     private int totalJugadores;
+    private float angle = 180;
 
     private bool girarTorre = false;
     private bool hayGanchos = false;
@@ -41,19 +42,19 @@ public class Torre : MonoBehaviour
 
         //totalJugadores = totalJugadoresDer - totalJugadoresIzq;
         //if(totalJugadores != 0)
-        if (totalJugadoresDer != 0)
-        {
-            girarTorre = true;
-            //Si es > 0 hay mas en la derecha, tiene que girar a la derecha
-            //Si es < 0 hay mas en la izquierda, tiene que girar a la izquierda
-            InclinarTorre();
-        }
-        else
-        {
-            girarTorre = false;
-        }
+        //if (totalJugadoresDer != 0)
+        //{
+        //    girarTorre = true;
+        //    //Si es > 0 hay mas en la derecha, tiene que girar a la derecha
+        //    //Si es < 0 hay mas en la izquierda, tiene que girar a la izquierda
+        //    InclinarTorre();
+        //}
+        //else
+        //{
+        //    girarTorre = false;
+        //}
 
-        if(girarTorre == true && hayGanchos)
+        if(totalJugadoresDer != 0 && hayGanchos)
         {
             StartCoroutine(InclinarTorre());
             //Invoke("InclinarTorre", 50f);
@@ -66,20 +67,21 @@ public class Torre : MonoBehaviour
         //angle > 0 gira a la izquierda
         //angle < 0 gira a la derecha
         float inclinacion = rotorTorre.transform.rotation.eulerAngles.z;
-        print("1 " + (inclinacion >= -0.5 && inclinacion <= 70));
-        print("2 " + (inclinacion <= 360 && inclinacion >= 310));
-        print("3 " + ((inclinacion >= -0.5 && inclinacion <= 70) || (inclinacion <= 360 && inclinacion >= 310)));
+        print("1 " + ((inclinacion >= 140 && inclinacion <= 220)));
 
-        while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
+
+        //while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
+        while ((inclinacion >= 140 && inclinacion <= 220))
         {
-            float angle = -1 * totalJugadoresDer * Time.deltaTime;
             //float angle = -10 * totalJugadores;
+            angle = -1 * totalJugadoresDer* 2 * Time.deltaTime;
             rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
-            yield return new WaitForSeconds(4f);
-            //transform.rotation = Quaternion.Euler(0,0,angle);
 
+            //angle += -1 * totalJugadoresDer * Time.deltaTime;
+            //rotorTorre.transform.rotation = Quaternion.Euler(0,0,angle);
+            
+            print(angle + " angle");
+            yield return new WaitForSeconds(10f);
         }
-
-
     }
 }
