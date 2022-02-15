@@ -56,9 +56,16 @@ public class Torre : MonoBehaviour
 
         if(totalJugadoresDer != 0 && hayGanchos)
         {
-            StartCoroutine(InclinarTorre());
+            StartCoroutine(ComprobarInclinacionTorre());
             //Invoke("InclinarTorre", 50f);
         }
+    }
+
+    private IEnumerator ComprobarInclinacionTorre()
+    {
+        StartCoroutine(InclinarTorre());
+        yield return new WaitForSeconds(3f);
+
     }
 
     private IEnumerator InclinarTorre()
@@ -71,17 +78,18 @@ public class Torre : MonoBehaviour
 
 
         //while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
-        while ((inclinacion >= 140 && inclinacion <= 220))
+        if ((inclinacion >= 140 && inclinacion <= 220))
         {
             //float angle = -10 * totalJugadores;
-            angle = -1 * totalJugadoresDer* 2 * Time.deltaTime;
+            angle = -1 * totalJugadoresDer*0.5f;
             rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
 
             //angle += -1 * totalJugadoresDer * Time.deltaTime;
             //rotorTorre.transform.rotation = Quaternion.Euler(0,0,angle);
             
             print(angle + " angle");
-            yield return new WaitForSeconds(10f);
+            yield return null;
         }
+        //yield return new WaitForSeconds(3f);
     }
 }
