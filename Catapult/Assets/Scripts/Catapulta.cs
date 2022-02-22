@@ -62,6 +62,14 @@ public class Catapulta : MonoBehaviour
         }
     }
 
+    void DividirIntervalo(int Inicio, int Fin)
+    {
+        float distanciaIntervalo = Fin - Inicio;  //Caso a = 0, b = 0.5.  
+        float tamañoObjeto = 0.2f;
+
+    }
+
+
     void LanzarJugador()
     {
         Rigidbody2D rbFP = FirePoint.GetComponent<Rigidbody2D>();

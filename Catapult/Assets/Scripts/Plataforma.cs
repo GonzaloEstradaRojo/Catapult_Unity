@@ -65,10 +65,12 @@ public class Plataforma : MonoBehaviour
     {
         int lenLista = ListJugadores.Count;
         GameObject primerJugador = ListJugadores[0];
-        Vector3 posPrimerJugador = primerJugador.transform.position;
         primerJugador.GetComponent<SpriteRenderer>().enabled = false;
         for (var i = 0; i< lenLista-1; i++)
+        {
+            print($"Jugador {i} "+ ListJugadores[i].transform.position);
             ListJugadores[i+1].transform.position = Vector3.MoveTowards(ListJugadores[i+1].transform.position, ListJugadores[i].transform.position, platMovSpeed * Time.deltaTime);
+        }
 
         if(ListJugadores.Count > 1)
         {

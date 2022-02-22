@@ -74,7 +74,7 @@ public class Torre : MonoBehaviour
         //angle > 0 gira a la izquierda
         //angle < 0 gira a la derecha
         float inclinacion = rotorTorre.transform.rotation.eulerAngles.z;
-        print("1 " + ((inclinacion >= 140 && inclinacion <= 220)));
+        //print("1 " + ((inclinacion >= 140 && inclinacion <= 220)));
 
 
         //while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
@@ -87,9 +87,10 @@ public class Torre : MonoBehaviour
             //angle += -1 * totalJugadoresDer * Time.deltaTime;
             //rotorTorre.transform.rotation = Quaternion.Euler(0,0,angle);
             
-            print(angle + " angle");
-            yield return null;
+            //print(angle + " angle");
+            yield return new WaitForSeconds(10f);
+            //yield return null;
         }
-        //yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
     }
 }

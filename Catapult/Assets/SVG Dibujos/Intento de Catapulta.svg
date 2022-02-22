@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="Intento de Catapulta.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.7349537"
+     inkscape:cx="397.30394"
+     inkscape:cy="560.57953"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1352"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 105.84,61.2 -53.64,59.4 7.56,4.32 55.8,-60.84 z"
+       id="path881" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 34.919999,122.76 H 182.52 l -0.36,14.4 -148.680001,1.44 z"
+       id="path883" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 45.719999,139.32 V 153 L 170.64,150.84 168.12,137.16 Z"
+       id="path885" />
+    <path
+       style="fill:#000000;stroke:#ffffff;stroke-width:0.453543"
+       id="path909"
+       sodipodi:type="arc"
+       sodipodi:cx="72.540001"
+       sodipodi:cy="166.5"
+       sodipodi:rx="15.66"
+       sodipodi:ry="16.02"
+       sodipodi:start="0"
+       sodipodi:end="6.2667443"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 88.200001,166.5 A 15.66,16.02 0 0 1 72.604367,182.51987 15.66,16.02 0 0 1 56.88053,166.63169 15.66,16.02 0 0 1 72.346906,150.48122 15.66,16.02 0 0 1 88.197884,166.23663" />
+    <path
+       style="fill:#000000;stroke:#ffffff;stroke-width:0.453543"
+       id="path911"
+       sodipodi:type="arc"
+       sodipodi:cx="160.92"
+       sodipodi:cy="168.66"
+       sodipodi:rx="21.24"
+       sodipodi:ry="19.619999"
+       sodipodi:start="0"
+       sodipodi:end="6.2667443"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="m 182.16,168.66 a 21.24,19.619999 0 0 1 -21.1527,19.61984 21.24,19.619999 0 0 1 -21.32658,-19.45855 21.24,19.619999 0 0 1 20.97738,-19.77979 21.24,19.619999 0 0 1 21.49903,19.29595" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 74.519998,57.6 65.16,69.119998 121.68,121.68 141.84,111.6 Z"
+       id="path946" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 7.5599998,82.079998 C 12.24,102.96 32.039999,104.04 32.039999,104.04 L 52.56,83.519998 Z"
+       id="path948" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 52.56,83.519996 113.76,-6.839998 1.08,11.520001 z"
+       id="path950" />
+  </g>
+</svg>

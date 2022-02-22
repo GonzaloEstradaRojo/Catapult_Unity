@@ -46,7 +46,7 @@ public class CuerdasRenderer : MonoBehaviour
         //    StartCoroutine(CrearCuerda1());
         //}
 
-        print(estaEnganchado + " enganchado");
+        //print(estaEnganchado + " enganchado");
         if (estaEnganchado)
         {
             posicionFinal.transform.position = ZonaChoque1Pos;
