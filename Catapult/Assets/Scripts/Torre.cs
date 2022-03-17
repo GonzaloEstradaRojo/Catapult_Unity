@@ -63,34 +63,45 @@ public class Torre : MonoBehaviour
 
     private IEnumerator ComprobarInclinacionTorre()
     {
+        yield return new WaitForSeconds(0f);
         StartCoroutine(InclinarTorre());
-        yield return new WaitForSeconds(3f);
 
     }
 
     private IEnumerator InclinarTorre()
     {
+
+        angle = 1f;
+
+        //rotorTorre.transform.rotation = Quaternion.Euler(0, 0, angle);
+        rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
+        yield return new WaitForSeconds(2f);
+        rotorTorre.transform.Rotate(new Vector3(0, 0, 0));
+
+
         //Debug.Log("Torre inclinandose "+ rotorTorre.transform.localRotation.eulerAngles.z);
         //angle > 0 gira a la izquierda
         //angle < 0 gira a la derecha
-        float inclinacion = rotorTorre.transform.rotation.eulerAngles.z;
-        //print("1 " + ((inclinacion >= 140 && inclinacion <= 220)));
+        //yield return new WaitForSeconds(3f);
+        //float inclinacion = rotorTorre.transform.rotation.eulerAngles.z;
+        ////print("1 " + ((inclinacion >= 140 && inclinacion <= 220)));
 
 
-        //while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
-        if ((inclinacion >= 140 && inclinacion <= 220))
-        {
-            //float angle = -10 * totalJugadores;
-            angle = -1 * totalJugadoresDer*0.5f;
-            rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
+        ////while ((inclinacion >= -0.5 && inclinacion<=70) || (inclinacion<=360 && inclinacion >= 310))
+        //if ((inclinacion >= 140 && inclinacion <= 220))
+        //{
+        //    //float angle = -10 * totalJugadores;
+        //    //angle = -1 * totalJugadoresDer*0.5f;
+        //    print("angulo" + angle);
+        //    yield return new WaitForSeconds(5f);
+        //    //rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
 
-            //angle += -1 * totalJugadoresDer * Time.deltaTime;
-            //rotorTorre.transform.rotation = Quaternion.Euler(0,0,angle);
-            
-            //print(angle + " angle");
-            yield return new WaitForSeconds(10f);
-            //yield return null;
-        }
-        yield return new WaitForSeconds(10f);
+        //    angle += -1 * totalJugadoresDer * Time.deltaTime;
+        //    rotorTorre.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        //    //print(angle + " angle");
+        //    //yield return null;
+        //}
+        //yield return new WaitForSeconds(10f);
     }
 }

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
-public class Catapulta : MonoBehaviour
+public class Tirachinas : MonoBehaviour
 {
-
     public GameObject catapulta;
     public GameObject JugadorPrefab;
     public Indicador indicador;
@@ -33,7 +31,7 @@ public class Catapulta : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             //Debug.Log("Mouse clicked");
         }
@@ -49,14 +47,14 @@ public class Catapulta : MonoBehaviour
             catapultaAnimator.SetTrigger("LanzarCatapulta");
             //Rotor.gameObject.transform.Rotate(0f, 0f, angle);  // = Quaternion.Euler(new Vector3(Rotor.transform.rotation.x, Rotor.transform.rotation.y,  Rotor.transform.rotation.z + angle));
         }
-        if (Input.GetKeyDown(KeyCode.S)) 
+        if (Input.GetKeyDown(KeyCode.S))
         {
             potenciaLanzamiento = indicador.potencia;
             LanzarJugador();
         }
-        if (Input.GetKeyDown(KeyCode.D)) 
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            GameObject Jugador = Instantiate(JugadorPrefab, new Vector3(8,6,0), Quaternion.identity);
+            GameObject Jugador = Instantiate(JugadorPrefab, new Vector3(8, 6, 0), Quaternion.identity);
         }
     }
 
@@ -68,6 +66,6 @@ public class Catapulta : MonoBehaviour
         Rigidbody2D rbFP = FirePoint.GetComponent<Rigidbody2D>();
         GameObject Jugador = Instantiate(JugadorPrefab, rbFP.transform.position, Quaternion.identity/* rbFP.transform.rotation*/);
         Rigidbody2D rb = Jugador.GetComponent<Rigidbody2D>();
-        rb.AddForce(rbFP.transform.right * indicador.Map(potenciaLanzamiento, 0,100,10 ,20), ForceMode2D.Impulse);
+        rb.AddForce(rbFP.transform.right * indicador.Map(potenciaLanzamiento, 0, 100, 10, 20), ForceMode2D.Impulse);
     }
 }
