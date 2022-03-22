@@ -92,7 +92,7 @@ public class Indicador : MonoBehaviour
         Vector2 positionRaton = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distancia = Vector3.Distance(transform.position, positionRaton);
 
-        if(positionRaton.y > transform.position.y){
+        if (positionRaton.y > transform.position.y){
             if (distancia < 10)
             {
                 potencia = Mathf.Round(Map(distancia, 0, 10, 0, 100));
@@ -105,5 +105,4 @@ public class Indicador : MonoBehaviour
             }               
         }
     }
-
 }

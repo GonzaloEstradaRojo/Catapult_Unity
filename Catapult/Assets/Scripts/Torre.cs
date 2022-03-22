@@ -12,10 +12,12 @@ public class Torre : MonoBehaviour
 
 
     private float velocidadRotacion = 10f;
-    private int totalJugadoresDer; 
+    private int totalJugadoresDer;
     private int totalJugadoresIzq;
     private int totalJugadores;
-    private float angle = 180;
+    private float anguloRotacionTorre = 5f;
+    private float anguloTorre = 180f;
+    private float tiempoDeGiro = 1.0f;
 
     private bool girarTorre = false;
     private bool hayGanchos = false;
@@ -30,6 +32,10 @@ public class Torre : MonoBehaviour
 
     private void Update()
     {
+
+        anguloTorre = rotorTorre.transform.rotation.z;
+        print($"anguloTorre {anguloTorre}");
+
         hayGanchos = (platAltaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado ||
                       platMediaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado ||
                       platBajaDer.transform.GetComponent<Plataforma>().cuerda.estaEnganchado);
@@ -54,29 +60,42 @@ public class Torre : MonoBehaviour
         //    girarTorre = false;
         //}
 
-        if(totalJugadoresDer != 0 && hayGanchos)
+        if (totalJugadoresDer != 0 && hayGanchos)
         {
-            StartCoroutine(ComprobarInclinacionTorre());
+            tiempoDeGiro = 1 + 1 / totalJugadoresDer;
+            print($"totalJugDer {totalJugadoresDer}   tiempo de giro  {tiempoDeGiro}");
+            //InvokeRepeating("GiraTorre", 0f, tiempoDeGiro);
+            StartCoroutine(InclinarTorre());
             //Invoke("InclinarTorre", 50f);
         }
     }
 
-    private IEnumerator ComprobarInclinacionTorre()
+    private void GiraTorre()
     {
-        yield return new WaitForSeconds(0f);
-        StartCoroutine(InclinarTorre());
-
+        
+        rotorTorre.transform.Rotate(new Vector3(0, 0, 0.1f));
     }
+
+    //private IEnumerator ComprobarInclinacionTorre()
+    //{
+    //    yield return new WaitForSeconds(0f);
+    //    StartCoroutine(InclinarTorre());
+
+    //}
 
     private IEnumerator InclinarTorre()
     {
 
-        angle = 1f;
+        for (float f = 0; f < 10; f++)
+        {
+            rotorTorre.transform.Rotate(new Vector3(0, 0, 0.01f));
+            yield return new WaitForSeconds(2f);
+        }
 
+        //yield return new WaitForSeconds(2f);
+        //rotorTorre.transform.Rotate(new Vector3(0, 0, 0.1f));
+    }
         //rotorTorre.transform.rotation = Quaternion.Euler(0, 0, angle);
-        rotorTorre.transform.Rotate(new Vector3(0, 0, angle));
-        yield return new WaitForSeconds(2f);
-        rotorTorre.transform.Rotate(new Vector3(0, 0, 0));
 
 
         //Debug.Log("Torre inclinandose "+ rotorTorre.transform.localRotation.eulerAngles.z);
@@ -103,5 +122,5 @@ public class Torre : MonoBehaviour
         //    //yield return null;
         //}
         //yield return new WaitForSeconds(10f);
-    }
+    
 }
