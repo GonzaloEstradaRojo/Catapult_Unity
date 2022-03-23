@@ -32,7 +32,7 @@ public class Plataforma : MonoBehaviour
         if (EliminacionJugador)
             QuitarPrimerJugador();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if(ListJugadores.Count > 0)
                 EliminacionJugador = true;
