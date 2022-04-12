@@ -68,7 +68,6 @@ public class Plataforma : MonoBehaviour
         primerJugador.GetComponent<SpriteRenderer>().enabled = false;
         for (var i = 0; i< lenLista-1; i++)
         {
-            print($"Jugador {i} "+ ListJugadores[i].transform.position);
             ListJugadores[i+1].transform.position = Vector3.MoveTowards(ListJugadores[i+1].transform.position, ListJugadores[i].transform.position, platMovSpeed * Time.deltaTime);
         }
 

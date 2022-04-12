@@ -71,9 +71,7 @@ public class Torre : MonoBehaviour
 
         if (totalJugadores != 0 && hayGanchos)
         {
-            print($"Max:{Math.Max(totalJugadoresDer, totalJugadoresIzq)} , Min: {Math.Min(totalJugadoresDer, totalJugadoresIzq)}");
             tiempoDeGiro = 1f + 1f / (1f + Math.Max(totalJugadoresDer,totalJugadoresIzq) - Math.Min(totalJugadoresDer, totalJugadoresIzq));
-            print($"totalJugDer {totalJugadoresDer}   tiempo de giro  {tiempoDeGiro}");
             StartCoroutine("InclinarTorre");
         }
     }
@@ -86,7 +84,6 @@ public class Torre : MonoBehaviour
         }
         else
         {
-            print($"Angulo {anguloTorre}");
             if (anguloTorre > 245 || anguloTorre < 115)
             {
                 StopCoroutine("InclinarTorre");

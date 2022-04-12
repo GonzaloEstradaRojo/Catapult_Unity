@@ -18,7 +18,6 @@ public class Tirachinas : MonoBehaviour
         Cubo = tirachinas.transform.Find("Cubo").gameObject;
         FirePoint = Cubo.transform.Find("FirePoint").gameObject;
 
-        print(FlechaIndicador.transform.position);
         tirachinasAnimator = tirachinas.GetComponent<Animator>();
     }
 
